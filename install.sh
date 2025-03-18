@@ -10,7 +10,7 @@ print_banner() {
     \  /\  / ____ \| |\  | |__| |
      \/  \/_/    \_\_| \_|_____/ 
                                     
-      Wand Installation Script
+      Modified Wand Installation Script
     '
 }
 print_banner
@@ -51,13 +51,13 @@ fi
 read -p "Do you want to run the game when the installation ends? (y/N): " run_game
 
 
-install_docker_official() {
-    echo "Installing Docker..."
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    sudo systemctl start docker
-    sudo systemctl enable docker
-}
+#install_docker_official() {
+    #echo "Installing Docker..."
+    #curl -fsSL https://get.docker.com -o get-docker.sh
+    #sudo sh get-docker.sh
+    #sudo systemctl start docker
+    #sudo systemctl enable docker
+#}
 
 if [[ $(uname) == "Linux" ]]; then
     echo "Setting up the environment for Linux."
@@ -142,11 +142,11 @@ POSTGRES_PASSWORD=$dbpass
 WEB_PORT=80
 WEB_HOSTNAME=$hostname
 
-WEB_LEGACY_PLAY=http://old.$hostname
-WEB_LEGACY_MEDIA=http://legacy.$hostname
+WEB_LEGACY_PLAY=http://$hostname/old
+WEB_LEGACY_MEDIA=http://$hostname/legacy
 
-WEB_VANILLA_PLAY=http://play.$hostname
-WEB_VANILLA_MEDIA=http://media.$hostname
+WEB_VANILLA_PLAY=http://$hostname/play
+WEB_VANILLA_MEDIA=http://$hostname/media
 
 WEB_RECAPTCHA_SITE=
 WEB_RECAPTCHA_SECRET=
